@@ -11,4 +11,4 @@ elif choice == 'R' or choice == 'r':
 elif choice == 'F' or choice == 'f':
     print('Сыт и весел.')
 else:
-    print('Выбор не ясен.')
+    print('Выбор не понятен.')
