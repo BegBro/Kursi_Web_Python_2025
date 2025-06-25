@@ -1,17 +1,17 @@
-# Формат вывода
-# \ = Управляющая последовательность. Начало escape sequence
-# \n - перевод строки
-# \t - табуляция
-# \x - вызов символа 2-знакоместамписать в 16-чном формате (ASCII)
-# \ - Экранирование символа (спрятать)
-# \u - вызов символа 4-знакоместамписать в 16-чном формате(Unicode)
-# Burned Again Shell = BUSH console = Linux console
-# T ERMINAL
-word1 = 'Пришел'
-word2 = 'Увидел'
-word3 = 'Победил'
-word4 = '27\xB0С'
-print(word1, word2, word3, sep=', ', end='->')
-print(word4)
-print("Концерт группы \"Кино\"")
-print('Путь к файлу: С:\\Program Files\\bin')
+# Формат вывода 2
+name = 'Игорь'
+email = 'aaa@bbb.ru'
+age = 32
+weight = 98.655656
+
+# 1 способ (плейсхолдеры)
+# %s - string
+# %d - digit (целое число)
+# %f - float
+print('Имя: %s, E-mail: %s, Возраст: %d' % (name, email, age))
+
+# 2 способ
+print('Имя: {}, E-mail: {}, Возраст: {}'.format(name, email, age))
+
+# 3 способ (самый популярный с версии 3.6)
+print(f'Имя: {name}, E-mail: {email}, Возраст: {age}, Вес: {weight:.3f}')
