@@ -13,5 +13,5 @@ print('Имя: %s, E-mail: %s, Возраст: %d' % (name, email, age))
 # 2 способ
 print('Имя: {}, E-mail: {}, Возраст: {}'.format(name, email, age))
 
-# 3 способ (самый популярный с версии 3.6)
-print(f'Имя: {name}, E-mail: {email}, Возраст: {age}, Вес: {weight:.3f}')
+# 3 способ (самый популярный с версии 3.6 - f-строка)
+print(f'Имя: {name},E-mail: {email}, Возраст: {age}, Вес: {weight:.3f}')
