@@ -9,11 +9,11 @@ if hour > 23:
 if hour < 0:
     hour = 0
 
-if hour >= 7 and hour < 12:
+if 7 <= hour < 12:
     print('Доброе утро.')
-elif hour >= 12 and hour < 18:
+elif 12 <= hour < 18:
     print('Добрый день.')
-elif hour >= 18 and hour < 23:
+elif 18 <= hour < 23:
     print('Добрый вечер.')
 else:
     print('Доброй ночи.')
