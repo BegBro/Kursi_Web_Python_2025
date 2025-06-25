@@ -17,3 +17,4 @@ elif hour >= 18 and hour < 23:
     print('Добрый вечер.')
 else:
     print('Доброй ночи.')
+# Сделано в Web Lesson 1
