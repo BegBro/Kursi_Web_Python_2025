@@ -1,12 +1,18 @@
+# match - case (3.10 >)
+flag = True
+print('Возможные ходы:\n\tL - влево\n\tR - вправо\n\tF - прямо, Q - выход')
 
-# while (height := int(input('Введите свой рост: '))) < 150 or height > 180:
-#     print('Вы не подходите.Позовите следующего.')
-# print('Вы подходите.Проходите.')
-
-height = int(input('Введите рост: '))
-
-while not (150 <= height <= 180):
-    print(f'Рост кандидата {height} не подходит')
-    height = int(input('Введите рост: '))
-
-print('Кандидат выбран.')
+while flag:
+    ch = input('Ваш выбор: ')
+    match ch:
+        case 'L' | 'l' | 'Д' | 'д':
+            print('Свернули налево.')
+        case 'R' | 'r' | 'К' | 'к':
+            print('Свернули направо.')
+        case 'F' | 'f' | 'А' | 'а':
+            print('Пошли прямо.')
+        case 'Q' | 'q' | 'Й' | 'й':
+            print('До свидания!')
+            flag = False
+        case _:
+            print('Выбор неясен.')
