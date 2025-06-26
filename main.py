@@ -18,6 +18,6 @@ for _ in range(10):
     print('Привет')
 """
 
-for i in range(3,101):
-    if i % 10 ==3:
+for i in range(1,101):
+    if i % 10 ==5 and i != 15:
         print(i)
