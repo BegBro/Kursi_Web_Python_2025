@@ -1,25 +1,12 @@
-"""
-# Строки (immutable)
-#    012345 - индекс str
-s = 'Python'
-# s[3] = 'y' error (immutable)
-print(s[0])
-print(s[3])
-print(f'Длина слова: {len(s)}')
-print(s[-1]) # индекс может быть отрицательным (будет считать с конца)
-"""
+# Строки (immutable, iterable)
+#  Задача: исправить букву в слове сабака
 
-v = 0
-s = 'язык python'
-for ch in s:
-    # if ch in {'a','я','у','ю', 'о', 'ё', 'э', 'ы', 'и','y','o'}:
-    #     v += 1
-    if ch in 'аяуюоёэыиуоyo':
-        v += 1
-print(f'Число гласных в слове "{s}" = {v}.')
+s = 'сабака'
+res = ''
 
-
-# Перебор строки по числовому индексу
-
-for index in range(len(s)):
-    print(s[index])
+for i in range(len(s)):
+    if i == 1:
+        res += 'о'
+    else:
+        res += s[i]
+print(res)
