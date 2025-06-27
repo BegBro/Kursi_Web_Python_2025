@@ -1,26 +1,32 @@
-# PEP8 - правила именования
-# c, l, O, I - не используют для обозначения переменных
-# Операции над множествами
-a = {3, 5, 7}
-b = {3, 4, 7, 9, 11}
-print(a)
-print(b)
-# Объединение множеств
-c = a.union(b)
-# c = a | b
-print(c)
+"""
+cards = {5, 7, 'туз','валет','дама','король'}
+print(cards)
+cards_2 = cards.copy()
+cards_2.discard('туз')
+cards_buf = cards_2 & cards
+while cards_buf:
+    print(cards_buf.pop())
+"""
 
-# Пересечение множеств
-c = a.intersection(b) # создание множества с одинаковыми элементами двух множеств
-# c = a & b
-print(c)
+"""
+cards ={3, 7, 'T','D','V','K'}
+ace = {'T'}
 
-# Разность
-c = b.difference(a) # есть в первом, но нет во втором
-# c = b - a
-print(c)
+result = cards - ace
+print(result)
+"""
 
-# симметричная Разность
-c = b.symmetric_difference(a) # есть только в одном и двух множеств
-# c = b ^ a
-print(c)
+"""
+t_is = False
+cards = {5, 7, 'туз','валет','дама','король'}
+print(cards)
+while cards:
+    card = cards.pop()
+    if card == 'туз':
+        cards.add(card)
+        t_is = True
+    else:
+        print(cards)
+    if t_is and len(cards) == 1:
+        break
+"""
