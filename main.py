@@ -1,24 +1,18 @@
-# Строки (immutable, iterable)
-# Срез (у строки и у других коллекций, кроме множеств(set))
-# Никогда не приводит к вылету за пределы
-# [начало(если 0,можно не указывать):окончание:шаг(можно не указывать)]
-#  start                             stop      step
+# Списки (List)
 """
-s = 'Дорог Рим город или дорог Миргород' # + и *
-# Миргород нам дорог... дорог...
-print(s[26:]+' '+(s[20:25]+'...')*2)
-"""
+s = {'3','4','5'}
+lst = list(range(1,11))
 
+print(lst)
 """
-s = 'Дорог Рим'
-# Город Миргород
-obr = s[::-1].lower()
-r= obr[:3]
-r_2 = obr[4:]
-print(r_2.title(),(r+r_2).title(),sep=' ')
+# lst=[] # пустой список
+# lst = [1,2,23]
+# lst = list('Python')
+# lst = [1,2,3] * 3 # повторяется 3 раза
+lst = [1,7,3,5,6,4,2]
+lst.sort()
+lst.reverse()
 
-s = 'Дорог Рим'
-temp = s.lower()
-city = temp[:5][::-1]
-print(city)
-"""
+print(lst)
+['append', 'clear', 'copy', 'count', 'extend',
+'index', 'insert', 'pop', 'remove', 'reverse', 'sort']
