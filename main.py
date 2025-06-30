@@ -36,14 +36,15 @@ for i in range(len(lst)):
 """
 
 lst = []
-while (item:= input('Ингредиент: ')) != '':
+
+while (item:= input('Ингредиент: ')) != '': # ввод ингредиентов и добавление их в список
     lst.append(item)
 
-temp = set(lst)
+temp = set(lst) # из списка в множество(для избавления от повторов)
 lst = list(temp)
 
-print(f'У нас есть {len(lst)} ингредиентов.')
+print(f'У нас есть {len(lst)} ингредиентов.') # вывод кол-во вводов и сортировка по алфавиту
 lst.sort()
 
-for i in range(len(lst)):
+for i in range(len(lst)):      # Вывод в цикле на экран
     print(f'\t{i+1}.{lst[i]}')
