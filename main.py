@@ -1,11 +1,10 @@
 # Кортеж (tuple, immutable)
-N = 3
-stud_lst = []
+# Функция sorted() # На вход итерируемый объект, на выходе сортированный список(list)
+s = {'Петров','Иванов','Бурунов'}
 
-for _ in range(N):
-    stud, aver = input('Введите фамилию студента:'), float(input('Введите средний балл студента:'))
-    stud_lst.append((stud, aver))
+lst = sorted(s,reverse=True)
 
-for st in stud_lst:
-    stud,aver = st
-    print(f'Студент: {stud} Средний балл: {aver}',end='\n')
+# lst = list(s)
+# lst.sort()
+
+print(lst,sep=' ')
