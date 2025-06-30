@@ -1,18 +1,19 @@
 # Кортеж (tuple, immutable)
-BLACK = (0, 0, 0)
-empty = ()  # tuple()
-one = (1,)  # кортеж из одного символа
-temper = 36, 6  # кортеж из двух символов ()
-s = 'Python'
-t = tuple(s) + ('.',)
-print(t)
 
-cards = [(7, 'червей'), ('туз', 'пик')]  # список кортежей (применяется если не требуется изменять содержимое)
+channels = ('red', 'green', 'blue')
 
-print((1,2) < (1,3))
+r,g,b = channels # распаковка (кол-во переменных должно быть одинаково), работает с любой коллекцией
+# r,*g = channels - r первый элемент, остальное g
 
-a = 3 # стало возможно благодаря кортежам
-b = 4
-a, b = b, a
+print(r)
+print(g)
+print(b)
 
-['count', 'index']
+channels = [1, 2, 3]
+
+r, *g = channels
+
+print(g)
+
+a,b = input(),input()
+print(a,b)
