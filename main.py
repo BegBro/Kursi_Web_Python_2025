@@ -1,50 +1,21 @@
-# Списки (List)
-"""
-s = {'3','4','5'}
-lst = list(range(1,11))
+# Cписки (list)
+# Имитация стека
 
-print(lst)
-"""
-# lst=[] # пустой список
-# lst = [1,2,23]
-# lst = list('Python')
-# lst = [1,2,3] * 3 # повторяется 3 раза
+N = 5
 
-# a = ['a','b','c']
-# b = a[:] # a.copy()
-# b.append('d') # b += ['d']
-# print(id(a))
-# print(id(b))
-#
-# print(a)
-# print(b)
-"""['append', 'clear', 'copy', 'count', 'extend', 'index', 'insert', 'pop', 'remove', 'reverse', 'sort']"""
+lst = []  # пустой список
 
-"""
-lst = []
-while True:
-    c = input('Введите а для того чтобы добавить ингредиент в список, введите пустую строку чтобы закончить список.:')
-    if c == '':
-        break
-    else:
-        lst.append(c)
+for i in range(N):
+    print(f'Кладём книгу {i + 1} в стопку.')
+    lst.append(i + 1)
 
-lst.sort()
+print('')
 
-for i in range(len(lst)):
-    print(str(i+1)+'.', lst[i])
-"""
+while lst:
+    item = lst.pop() # возвращаем счетчик в переменную item
+    print(f'Берём книгу {item} из стопки.')
 
-lst = []
 
-while (item:= input('Ингредиент: ')) != '': # ввод ингредиентов и добавление их в список
-    lst.append(item)
 
-temp = set(lst) # из списка в множество(для избавления от повторов)
-lst = list(temp)
-
-print(f'У нас есть {len(lst)} ингредиентов.') # вывод кол-во вводов и сортировка по алфавиту
-lst.sort()
-
-for i in range(len(lst)):      # Вывод в цикле на экран
-    print(f'\t{i+1}.{lst[i]}')
+['append', 'clear', 'copy', 'count', 'extend',
+ 'index', 'insert', 'pop', 'remove', 'reverse', 'sort']
