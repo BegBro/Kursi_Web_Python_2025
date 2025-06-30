@@ -1,19 +1,11 @@
 # Кортеж (tuple, immutable)
+N = 3
+stud_lst = []
 
-channels = ('red', 'green', 'blue')
+for _ in range(N):
+    stud, aver = input('Введите фамилию студента:'), float(input('Введите средний балл студента:'))
+    stud_lst.append((stud, aver))
 
-r,g,b = channels # распаковка (кол-во переменных должно быть одинаково), работает с любой коллекцией
-# r,*g = channels - r первый элемент, остальное g
-
-print(r)
-print(g)
-print(b)
-
-channels = [1, 2, 3]
-
-r, *g = channels
-
-print(g)
-
-a,b = input(),input()
-print(a,b)
+for st in stud_lst:
+    stud,aver = st
+    print(f'Студент: {stud} Средний балл: {aver}',end='\n')
