@@ -1,7 +1,12 @@
 # Кортеж (tuple, immutable)
-# Функция enumerate() - в цикле for возвращает пару (i, v) (Нумерует)
+# Методы строки split() и join()
 
-fio = {'Петров','Иванов','Бурунов'}
+text = '192 и также 168 и также 0 и также 1'
+ip = '192.168.0.1'
 
-for i,v in enumerate(fio):
-    print(f'{i+1}.{v}')
+lst = text.split(' и также ')
+
+print(lst)
+text2 = ' и также '.join(lst)
+
+print(text2)
