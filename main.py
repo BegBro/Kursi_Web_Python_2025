@@ -9,3 +9,4 @@ if s.startswith('смо'):
 
 if s.endswith('еть'):
     print('Тоже да.')
+
