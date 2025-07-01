@@ -1,31 +1,30 @@
 # ДЗ: Функция, которая выводит число словами 56 -> пятьдесят шесть
 def num_to_word(num):
-    if str(num) > 2:
-        return
+    if len(str(num)) > 2:
+        return None
+
     e = num % 10
-    le = ['один','два']
+    g = int(num / 10)
+
+    le = {1: 'один',
+          2: 'два',
+          3: 'три',
+          4: 'четыре',
+          5: 'пять',
+          6: 'шесть',
+          7: 'семь',
+          8: 'восемь',
+          9: 'девять',
+          }
+
+    if e in le.keys():
+        e = le[e]
+    if g in le.keys():
+        g = le[g]
+    lst = [g,e]
+    return lst
 
 
-# Функции (Do not Repeat Yourself:DRY)
-# Return Value
 
-def square(num):
-    return num ** 2
-
-
-def even_odd(num):
-    if num % 2 == 0:
-        return 'Чётное'
-    return 'Нечётное'
-
-
-def print_string(s=None):
-    if s is None:
-        return
-    print(s)
-
-
-t = square(5)
-t = square(t)
-print(even_odd(6))
-print(t)
+f = num_to_word(14)
+print(f)
