@@ -1,38 +1,61 @@
-# # Вложенные списки
-# # matrix =[
-# #     [1,2,3],
-# #     [4,5,6],
-# #     [7,8,9],
-# # ]
-#
-# N = 3
-# matrix = [[i] * N for i in range(N)]
-# print(matrix)
-#
-# # обход 2-мерного списка (матрицы)
-# count = 1
-# for row in range(len(matrix)):
-#     for col in range(len(matrix[row])):
-#         matrix[row][col] = count
-#         count += 1
-#
-# print(matrix)
+# Словари
+# Пустой словарь
+# Первый способ: d = {}
+# Второй способ: d = dict()
+# Предзаполненный словарь
+#      ключ     значение
+#   (уникальный)
+d = {
+    'table': ['таблица','стол'],
+    'well':['хорошо','колодец'],
+    'chair': 'стул',
+    'apple': 'яблоко',
+    1: 'один',
+    (55.75,37.5):'Москва',
+}
 
-# matrix = []
-#
-# star = 1
-# N = 8
-#
-# for i in range(N):
-#     table = []
-#     for j in range(star, star + N):
-#         table.append(j)
-#     matrix.append(table)
-#     table = []
-#     star += N
-#
-# print(matrix)
+print(d[(55.75,37.5)])
 
+print(d['well'][0])
+if type(d['well']) == list:
+    d['well'].append('скважина')
+# Добавление в словарь
+d['plum'] = 'слива'
+print(d['plum'])
+del d['well']
 
-matrix =[[i + j for j in range(3)] for i in range(1,10,3) ]
-print(matrix)
+# Перебор по умолчанию
+for key in d: # d.keys()
+    print(key, '->', d[key])
+# print(d) - словарь целиком
+
+deleted_item = d.pop('apple')
+
+print('Удалился элемент: ',deleted_item)
+
+print('Есть ли стул в словаре:')
+if 'стул' in d.values():
+    print('Да есть')
+
+print('Доступ к несуществующему ключу без "исключений"')
+pear = d.get('pear', 'Груши тут нет')
+#             ключ    Вернет если обратится к ключу
+print('Где груша :', pear)
+
+# Перебор всех значений
+for value in d.values():
+    print(value)
+
+# Перебор пар "пар-заначение"
+for k,v in d.items():
+    print(k,'->',v)
+
+print(d.keys()) # список ключей (если требуется поработать со значениями(ключами), нужно перевести в список)
+print(d.values()) # список значений (если требуется поработать со значениями, нужно перевести в список)
+print(d.items()) # список кортежей (ключ, значение)
+
+"""
+Методы словаря:
+['clear', 'copy', 'fromkeys', 'get', 'items', 'keys',
+'pop', 'popitem', 'setdefault', 'update', 'values']
+"""
