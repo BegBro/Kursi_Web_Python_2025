@@ -18,17 +18,21 @@
 #
 # print(matrix)
 
-matrix = []
-table = []
+# matrix = []
+#
+# star = 1
+# N = 8
+#
+# for i in range(N):
+#     table = []
+#     for j in range(star, star + N):
+#         table.append(j)
+#     matrix.append(table)
+#     table = []
+#     star += N
+#
+# print(matrix)
 
-star = 1
-N = 8
 
-for i in range(N):
-    for j in range(star, star + N):
-        table.append(j)
-    matrix.append(table)
-    table = []
-    star += N
-
+matrix =[[i + j for j in range(3)] for i in range(1,10,3) ]
 print(matrix)
