@@ -1,34 +1,31 @@
+# ДЗ: Функция, которая выводит число словами 56 -> пятьдесят шесть
+def num_to_word(num):
+    if str(num) > 2:
+        return
+    e = num % 10
+    le = ['один','два']
+
+
 # Функции (Do not Repeat Yourself:DRY)
-# Scope(local or global)
-# Синтаксис:
-# def <имя функции>([параметры])
-#   команды
+# Return Value
 
-person = 'Пётр' # global scope глобальная переменная
-count = 0
-def greet_to_name(name='NoName'):
-    print('Привет',name)
-    print(count)
+def square(num):
+    return num ** 2
 
 
-def increment():
-    global count
-    count +=1
+def even_odd(num):
+    if num % 2 == 0:
+        return 'Чётное'
+    return 'Нечётное'
 
 
-def print_list(array):
-    if array is None:
-        array = []
-    for item in array:
-        print(item)
+def print_string(s=None):
+    if s is None:
+        return
+    print(s)
 
 
-# def increment(count): # Приходит копия глобальной переменной count
-#     count +=1
-
-
-increment()
-greet_to_name(person)
-greet_to_name()
-print_list(['Мяу', 'Гав'])
-
+t = square(5)
+t = square(t)
+print(even_odd(6))
+print(t)
