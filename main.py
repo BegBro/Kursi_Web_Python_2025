@@ -1,23 +1,34 @@
-# Словари
-# Частотный анализ
+# Функции (Do not Repeat Yourself:DRY)
+# Scope(local or global)
+# Синтаксис:
+# def <имя функции>([параметры])
+#   команды
 
-text = """Растительность многолетняя травянистая лугово-степной и степной подзоны, ежегодно оставляющей в почве
- значительное количество растительных остатков.
- В соответствующих гидротермических условиях идёт их разложение с образованием гумусовых соединений (гумификация),
- накапливаемых в верхних слоях почвы. Вместе с гумусом в почве в виде сложных органо-минеральных соединений
- закрепляются такие элементы питания растений, как азот, фосфор, сера, железо и так далее
-"""
-d ={}
-commas = ('-', '.', ',','(',')')
-for z in commas:
-    text = text.replace(z, '')
-lst = text.lower().split()
+person = 'Пётр' # global scope глобальная переменная
+count = 0
+def greet_to_name(name='NoName'):
+    print('Привет',name)
+    print(count)
 
-for item in lst:
-    if item in d.keys():
-        d[item] += 1
-    else:
-        d[item] = 1
-print('Частотный анализ слов текста.')
-for i,v in d.items():
-    print(f'{i}:{v}')
+
+def increment():
+    global count
+    count +=1
+
+
+def print_list(array):
+    if array is None:
+        array = []
+    for item in array:
+        print(item)
+
+
+# def increment(count): # Приходит копия глобальной переменной count
+#     count +=1
+
+
+increment()
+greet_to_name(person)
+greet_to_name()
+print_list(['Мяу', 'Гав'])
+
