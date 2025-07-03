@@ -3,6 +3,35 @@
 # lambda <аргументы>:<выражения>
 # словарные выражения
 # ключ сортировки
+# проверка коллекций: any(),all()
+import sys
+
+# any - любой элемент коллекции вернул True
+# all - все элементы коллекции вернули True
+
+# print(all([1, 2, 3]))  # все элементы ненулевые
+# print(all([1, 2, 0]))  # один элемент нулевой
+# print(all([1]))
+#
+# words = 'один два три'.split()
+#
+# # list_for_analize = list(map(lambda x: len(x) > 2,words))
+# print(all(list(map(lambda x: len(x) > 2,words))))
+
+# потоковый ввод sys.stdin - итератор, который идет только вперед: Stop сигнал Ctrl + d, в Win Ctrl + z.
+
+data = [d.strip('\n') for d in sys.stdin.readlines()]
+print(data)
+temp = [] # индекс строки в data и число слов в виде кортежей
+for i,s in enumerate(data):
+    temp.append((i, len(s.split())))
+print(temp)
+temp.sort(key=lambda x:x[1])
+print(temp)
+index = temp[0][0]
+print(index)
+res = sorted(data[index].split())
+print(*res,sep='-')
 
 
 
@@ -20,7 +49,6 @@
 # ]
 #
 # print(sorted(goods,key=lambda s:(s[1],s[2],s[0])))
-
 
 
 # numbers = [1, 2, 3, 4, 5]
