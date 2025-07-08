@@ -7,13 +7,62 @@
 #   если исключения не было
 # finally:
 #   выполняется в любом случае
+# Задача 2.
+while True:
+    a = input('Введите первое число: ')
+    b = input('Введите второе число: ')
+
+    if a.isdigit() and b.isdigit():
+        if int(b) == 0:
+            print('На ноль делить нельзя')
+        else:
+            print(int(a) / int(b))
+            break
+    else:
+        print('Вводить надо только числа')
+
+
+
+# Задача 1.
+
+# Мое решение.
+# lst = [1,2,3,4,5,6,7,8,9]
+# loop = True
+# while loop:
+#     try:
+#         index = int(input('Введите индекс: '))
+#         print(f'Число по индексу {index}: {lst[index]}')
+#     except IndexError:
+#         print('Вы вышли за диапазон.')
+#     except ValueError:
+#         print('Требуется ввести целое число.')
+#     else:
+#         loop = False
+
+# Решение преподавателя
+# lst = [1,2,3,4,5,6,7,8,9]
+# try:
+#     index = int(input('Введите индекс:'))
+#     if not -len(lst) < index < len(lst) - 1:
+#         raise ValueError('Индекс вне диапазона.')
+#     res = lst[index]
+#     print(f'Число по индексу {index}: {lst[index]}')
+# except ValueError as exp:
+#     mess = exp.args
+#     if mess[0].startswith('invalid literal'):
+#         print(f'Вводить надо числа')
+#     else:
+#         print(exp)
+
+
+
 # Утверждения (assertion)
 # В основном - для нужд тестирования
-try:
-    text = input('Введите текст: ')
-    assert len(text) > 3 # это утверждение, если False -> получаем AssertionError
-except AssertionError:
-    print('Слишком коротки текст.')
+# try:
+#     text = input('Введите текст: ')
+#     assert len(text) > 3 # это утверждение, если False -> получаем AssertionError
+# except AssertionError:
+#     print('Слишком коротки текст.')
 
 # "Бросаемся" исключениями - raise
 # max_val = 10
