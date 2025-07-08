@@ -7,6 +7,63 @@
 #   если исключения не было
 # finally:
 #   выполняется в любом случае
+
+
+
+# # Практикум (обучаемый словарь)
+# import pickle
+#
+# # Минимальная версия, если файл dict.dat отсутствует
+# voc = {
+#     'стол': 'table',
+#     'стул': 'chair',
+# }
+#
+#
+# # функция для распечатки словаря
+# def print_voc():
+#     print('Сейчас словарь содержит: ')
+#     for k, v in voc.items():
+#         print(k, '—', v)
+#
+#
+# # загружаем словарь из файлов
+# try:
+#     with open('dict.dat', 'rb') as dump_in:
+#         voc = pickle.load(dump_in)
+#
+# except FileNotFoundError:
+#     with open('dict.dat', 'wb') as dump_out:
+#         pickle.dump(voc,dump_out)
+#     print('Создан минимальный словарь')
+#     print_voc()
+# while True:
+#     temp = input('\nВведите слова для перевода или # для завершения: ')
+#     word = temp.strip().lower()
+#     if word == '#' or word == '№':
+#         break
+#     if word in voc.keys():
+#         translate = voc[word]
+#         print(f'Cлово "{word}" переводится как {translate}.\n')
+#     else:
+#         print(f'Значение слова {word} отсутствует в словаре')
+#         new_key = f'А как слово {word} переводится.\n '
+#         new_key += 'Если ничего не вводите нажмите ENTER,\n '
+#         new_key += 'Или введите его здесь: '
+#         new_word = input(new_key)
+#
+#         if new_word != '' or len(new_word) > 2 :
+#             voc[word] = new_word
+#             print(f'Слово "{word}" с переводом "{new_word}" внесено в словарь.')
+#         else:
+#             print('Ничего не введено или слишком короткое слово.')
+#             continue
+# print('До новых встреч!')
+# # Сохранить словарь
+# with open('dict.dat', 'wb') as dump_out:
+#     pickle.dump(voc,dump_out)
+
+
 # Задача 2.
 # while True:
 #     a = input('Введите первое число: ')
@@ -22,19 +79,18 @@
 #         print('Вводить надо только числа')
 
 
-
-while True:
-    try:
-        a = input('Введите первое число: ')
-        b = input('Введите второе число: ')
-        c = int(a) / int(b)
-    except ValueError:
-        print('Только целые числа.')
-    except ZeroDivisionError:
-        print('На ноль делить нельзя.')
-    else:
-        print(f'{a}/{b} = {int(c)}')
-        break
+# while True:
+#     try:
+#         a = input('Введите первое число: ')
+#         b = input('Введите второе число: ')
+#         c = int(a) / int(b)
+#     except ValueError:
+#         print('Только целые числа.')
+#     except ZeroDivisionError:
+#         print('На ноль делить нельзя.')
+#     else:
+#         print(f'{a}/{b} = {int(c)}')
+#         break
 
 
 # Задача 1.
@@ -67,7 +123,6 @@ while True:
 #         print(f'Вводить надо числа')
 #     else:
 #         print(exp)
-
 
 
 # Утверждения (assertion)
