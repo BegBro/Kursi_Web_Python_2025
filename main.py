@@ -1,3 +1,31 @@
+# Регулярные выражения (поиск по паттерну)
+# Regular expressions (re)
+# r-строка - raw-string ("сырая" строка)
+# Квантификаторы (quantity)
+# {m} - ровно m раз
+# {m,} - m раз и более
+# {n,} - не более n раз
+# {m,n} - от m до n (без пробела)
+# ? - от нуля до одного (аналог {0,1})
+# * - от одного до бесконечности (32767) {0,}
+# + - от 1 до бесконечности (32767) {1,}
+import re
+
+# pattern = r'\b\w{4}\b' # все слова из 4 символов
+# pattern = r'\d'
+# pattern = r'd{3}' # три цифры подряд
+# pattern = r'начало!\Z' # строка заканчивается на "начало!"
+# pattern = '[0-5][0-9]' # последовательность из двух цифр
+# pattern = '[а-яА-я]'  # все буквы от а до я и от А до Я
+# pattern = '[^ерм]' # Исключить символы: [ерм]
+# pattern = r'\((.+?)\)' # вытащить текст из скобок
+# pattern = 'o{2,5}' # Вывести "о" которое встречается от 2 до 5 раз
+pattern = 'Go{2,}gle'
+test_string = 'Gogle,Google,Gooogle,Gooooooogle'
+result = re.findall(pattern, test_string)
+print(result)
+# print('Цифры есть.') if result else print('Цифр нет.') # тернарный if (тернарный условный оператор) (три конца и никаких elif)
+
 # Линтеры - статический анализатор кода (контролирует следование хорошим практикам)
 # Flake8 - самый популярный линтер
 # pip install flake8
@@ -7,7 +35,6 @@
 # Arguments: --max-complexity 10 $FileDir$/$FileName$
 # Path: $FileDir$
 # Advanced Options/OutputFilter: $FILE_PATH$:$LINES$
-
 
 # Библиотека pymorphy
 # pip install pymorphy3
