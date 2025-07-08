@@ -8,7 +8,18 @@
 # finally:
 #   выполняется в любом случае
 
+# "Бросаемся" исключениями - raise
+max_val = 10
+min_val = 1
 
+try:
+    val = int(input(f'Введите число в диапазоне от {min_val} до {max_val}: '))
+    if not min_val < val < max_val:
+        raise ValueError('Введенное число вне диапазона.')
+    print(f'Введенное число {val} лежит в заданном диапазоне.')
+
+except ValueError as exp:
+    print('Надо быть внимательнее:',exp)
 
 # print('Остаток от деления:')
 # loop = True
