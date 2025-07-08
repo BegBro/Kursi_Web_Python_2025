@@ -1,18 +1,29 @@
+# Линтеры - статический анализатор кода (контролирует следование хорошим практикам)
+# Flake8 - самый популярный линтер
+# pip install flake8
+# (flake8-bugbear - для нахождения распространенных логических ошибок в коде)
+# (pep8-naming - проверяет имена на соответствие pep8)
+# pip install flake8-bugbear pep8-naming
+# Arguments: --max-complexity 10 $FileDir$/$FileName$
+# Path: $FileDir$
+# Advanced Options/OutputFilter: $FILE_PATH$:$LINES$
+
+
 # Библиотека pymorphy
 # pip install pymorphy3
 # pip install -U pymorphy3-dicts-ru
-import pymorphy3
-
-form = pymorphy3.MorphAnalyzer().parse('бутылка')[0]
-
-for btl in reversed(range(99)):
-    print(f'В холодильнике {btl + 1} {form.make_agree_with_number(btl+1).word} пива')
-    print('Возьмем одну и выпьем.')
-    if btl % 10 == 1 and btl != 11:
-        remain = 'Осталась'
-    else:
-        remain = 'Осталось'
-    print(f'{remain} {btl} {form.make_agree_with_number(btl).word} пива.')
+# import pymorphy3
+#
+# form = pymorphy3.MorphAnalyzer().parse('бутылка')[0]
+#
+# for btl in reversed(range(99)):
+#     print(f'В холодильнике {btl + 1} {form.make_agree_with_number(btl+1).word} пива')
+#     print('Возьмем одну и выпьем.')
+#     if btl % 10 == 1 and btl != 11:
+#         remain = 'Осталась'
+#     else:
+#         remain = 'Осталось'
+#     print(f'{remain} {btl} {form.make_agree_with_number(btl).word} пива.')
 
 # Исключения (runtime)
 # try:
