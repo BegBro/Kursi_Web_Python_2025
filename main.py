@@ -8,19 +8,33 @@
 # finally:
 #   выполняется в любом случае
 # Задача 2.
+# while True:
+#     a = input('Введите первое число: ')
+#     b = input('Введите второе число: ')
+#
+#     if a.isdigit() and b.isdigit():
+#         if int(b) == 0:
+#             print('На ноль делить нельзя')
+#         else:
+#             print(int(a) / int(b))
+#             break
+#     else:
+#         print('Вводить надо только числа')
+
+
+
 while True:
-    a = input('Введите первое число: ')
-    b = input('Введите второе число: ')
-
-    if a.isdigit() and b.isdigit():
-        if int(b) == 0:
-            print('На ноль делить нельзя')
-        else:
-            print(int(a) / int(b))
-            break
+    try:
+        a = input('Введите первое число: ')
+        b = input('Введите второе число: ')
+        c = int(a) / int(b)
+    except ValueError:
+        print('Только целые числа.')
+    except ZeroDivisionError:
+        print('На ноль делить нельзя.')
     else:
-        print('Вводить надо только числа')
-
+        print(f'{a}/{b} = {int(c)}')
+        break
 
 
 # Задача 1.
