@@ -1,3 +1,58 @@
+# ООП (encapsulation)
+# Класс - тип, описывающий устройство объектов.
+# Экземпляр - объект порожденный классом.
+
+class Car:
+    def __init__(self):
+        print('Конструктор вызван.')
+    def start_engine(self):
+        self.engine_on = True
+    def drive_to(self,place):
+        if self.engine_on:
+            print(f'Едем в {place}')
+        else:
+            print('Двигатель не заведён, не едем.')
+
+car = Car()
+car.start_engine()
+
+car.drive_to('город')
+
+
+
+# Методы классов
+# class Greater:
+#     def hello(self,name = 'Noname') -> None:
+#         print('Привет,',name)
+#
+#     def goodbye(self) -> None:
+#         print('Пока, мир!')
+#
+# # self - ссылка на объект вызвавший класс
+#
+# g = Greater()
+# g.hello('Жека.')
+# g.goodbye()
+
+# Свойства классов
+# class Fruit:
+#     pass
+#
+# a = Fruit()
+# b = Fruit()
+# c = Fruit()
+#
+# a.name = 'Яблоко'
+# a.weight = 120
+#
+# b.name = 'Груша'
+# b.weight = 150
+#
+#
+# print(a.name)
+# print(a.weight)
+# print(c.weight)
+
 # Регулярные выражения (поиск по паттерну)
 # Regular expressions (re)
 # r-строка - raw-string ("сырая" строка) - отключение всех управляющих символов
@@ -9,14 +64,14 @@
 # ? - от нуля до одного (аналог {0,1})
 # * - от нуля до бесконечности (32767) {0,}
 # + - от 1 до бесконечности (32767) {1,}
-import re
-import requests
-
-pattern = r'<img[^>]+src="([^">]+)"'
-# test_string = 'img height="50" width="150" src="images/bg.jpg"'
-html = requests.get('https://yandex.ru').text
-result = re.findall(pattern, html)
-print(result)
+# import re
+# import requests
+#
+# pattern = r'<img[^>]+src="([^">]+)"'
+# # test_string = 'img height="50" width="150" src="images/bg.jpg"'
+# html = requests.get('https://yandex.ru').text
+# result = re.findall(pattern, html)
+# print(result)
 
 # pattern = r'\b\w{4}\b' # все слова из 4 символов
 # pattern = r'\d'
@@ -65,8 +120,6 @@ print(result)
 # # через list comprehension с сортировкой
 # result = sorted(x.strip() for x in result)
 # print(result)
-
-
 
 
 # Линтеры - статический анализатор кода (контролирует следование хорошим практикам)
