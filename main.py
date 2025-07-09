@@ -14,10 +14,10 @@ import requests
 
 pattern = r'<img[^>]+src="([^">]+)"'
 # test_string = 'img height="50" width="150" src="images/bg.jpg"'
-
-result = re.findall(pattern, test_string)
-
+html = requests.get('https://yandex.ru').text
+result = re.findall(pattern, html)
 print(result)
+
 # pattern = r'\b\w{4}\b' # все слова из 4 символов
 # pattern = r'\d'
 # pattern = r'd{3}' # три цифры подряд
