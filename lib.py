@@ -1,12 +1,76 @@
+class Sorter:
+    def __init__(self):
+        self.words = []
+
+    def add_word(self,word):
+        self.words.append(word)
+
+    def result(self):
+        return sorted(self.words, key= lambda x: len(x), reverse=True)
+
+
+class Separator:
+    def __init__(self):
+        self.odd = []  # нечётные
+        self.even = []  # чётные
+
+    def add_num(self, num):
+        if num % 2 == 0:
+            self.even.append(num)
+        else:
+            self.odd.append(num)
+
+    def get_odd(self):
+        return self.odd
+
+    def get_even(self):
+        return self.even
+
+
+class Clicker:
+    def __init__(self):
+        self._counter = 0
+
+    def click(self):
+        self._counter += 1
+
+    def get_counter(self):
+        return self._counter
+
+    def reset(self):
+        self._counter = 0
+
+
 class Car:
-    counter = 0 # Статичное свойство ("счетчик машин")
+    counter = 0  # Статичное свойство ("счетчик машин")
 
     def __init__(self, brand='NoBrand', model='NoModel', color='NoColor'):
         self.brand = brand  # 'BMW'  # Экземплярные поля, они создаются с каждым новым экземпляром класса
         self.model = model  # 'M3'   # Экземплярные поля, они создаются с каждым новым экземпляром класса
         self.color = color  # 'black'# Экземплярные поля, они создаются с каждым новым экземпляром класса
-        self.engine_on = False       # Экземплярные поля, они создаются с каждым новым экземпляром класса
+        self.engine_on = False  # Экземплярные поля, они создаются с каждым новым экземпляром класса
         Car.counter += 1
+
+    def set_brand(self, new_brand):
+        if new_brand:
+            self.brand = new_brand
+
+    def set_model(self, new_model):
+        if new_model:
+            self.model = new_model
+
+    def set_color(self, new_color):
+        if new_color:
+            self.color = new_color
+
+    def get_brand(self):
+        return self.brand
+
+    def get_model(self):
+        return self.model
+
+    def get_color(self):
+        return self.color
 
     def start_engine(self):
         self.engine_on = True

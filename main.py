@@ -1,21 +1,68 @@
+#
+
 # ООП (encapsulation)
 
 # Класс - тип, описывающий устройство объектов.
 # Экземпляр - объект порожденный классом.
 # Конструктор
 # Статичные члены класса
-from lib import Car
-car1 = Car()
-car2 = Car()
-car3 = Car()
-print('В парке машин: ',Car.get_counter())
+# задачи
+from lib import Sorter
+s = Sorter()
+
+s.add_word('Привет')
+s.add_word('Пока')
+s.add_word('Здорово')
+s.add_word('Здравствуй')
+
+print(s.result())
+
+# from lib import Separator
+#
+# sep = Separator()
+#
+# for i in range(1,26):
+#     sep.add_num(i)
+#
+# print(sep.get_odd())
+# print(sep.get_even())
+
+# from lib import Clicker
+# cl = Clicker()
+#
+# cl.click()
+# cl.click()
+# cl.click()
+#
+#
+# print(cl.get_counter())
+# cl.reset()
+# print(cl.get_counter())
+
+
+# from lib import Car
+#
+# car = Car()
+#
+# car.set_color('BLACK')
+# car.start_engine()
+# car.drive_to('домой')
+# print(car.get_color())
+#
+# print(car.get_model())
+
+# car1 = Car()
+# car2 = Car()
+# car3 = Car()
+# print('В парке машин: ',Car.get_counter())
 
 
 # from lib import Person
 #
 # p = Person()
-# p.set_age(7897)
+# p.set_age(78)
 # print(p.get_name())
+# print(p.get_age())
 # p.person_info()
 
 
