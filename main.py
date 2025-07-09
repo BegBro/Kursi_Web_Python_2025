@@ -1,16 +1,23 @@
 # Регулярные выражения (поиск по паттерну)
 # Regular expressions (re)
-# r-строка - raw-string ("сырая" строка)
+# r-строка - raw-string ("сырая" строка) - отключение всех управляющих символов
 # Квантификаторы (quantity)
 # {m} - ровно m раз
-# {m,} - m раз и более
+# {m,}- m раз и более
 # {n,} - не более n раз
 # {m,n} - от m до n (без пробела)
 # ? - от нуля до одного (аналог {0,1})
-# * - от одного до бесконечности (32767) {0,}
+# * - от нуля до бесконечности (32767) {0,}
 # + - от 1 до бесконечности (32767) {1,}
 import re
+import requests
 
+pattern = r'<img[^>]+src="([^">]+)"'
+# test_string = 'img height="50" width="150" src="images/bg.jpg"'
+
+result = re.findall(pattern, test_string)
+
+print(result)
 # pattern = r'\b\w{4}\b' # все слова из 4 символов
 # pattern = r'\d'
 # pattern = r'd{3}' # три цифры подряд
@@ -20,11 +27,47 @@ import re
 # pattern = '[^ерм]' # Исключить символы: [ерм]
 # pattern = r'\((.+?)\)' # вытащить текст из скобок
 # pattern = 'o{2,5}' # Вывести "о" которое встречается от 2 до 5 раз
-pattern = 'Go{2,}gle'
-test_string = 'Gogle,Google,Gooogle,Gooooooogle'
-result = re.findall(pattern, test_string)
-print(result)
+# pattern = 'Go{2,}gle'
+
+# pattern = r'стеклянн?ый' # 2-я "н" может присутствовать
+# "жадный" квантификатор (greedy quantifier)
+
+# pattern = r'<img.*>' # жадный(greedy) квантификатор
+# pattern = r'<img.*?>' # ленивый(lazy, non-greedy) квантификатор
+# pattern = r'<img[^>]+src="([^">]+)"' # только путь к картинке
+# pattern = r'<p>(.*?)</p>' # содержимое абзаца html
+# pattern = r'p[^>]*>(.*)</p>' # содержимое абзаца html c атрибутами
+# result = re.findall(pattern, test_string)
+
 # print('Цифры есть.') if result else print('Цифр нет.') # тернарный if (тернарный условный оператор) (три конца и никаких elif)
+
+# Убираем все знаки препинания
+# def remove_punctuation(input_str: str) -> str:
+#     """
+#     Методом sub() заменяем все найденные совпадения
+#     пустой строкой и возвращаем "очищенную"
+#     :param input_str: строка со знаками препинания
+#     :return: строку, очищенную от знаков препинания
+#     """
+#     return re.sub(r'[^\w\s]','',input_str)
+# test_string = ('Для 1 000 знаков текста подходят стр??????????аницы приветственных текстов,'
+#                ' описания больших карточек товаров, рекламные посты, короткие письма для рассылки,'
+#                ' малые тексты “О компании” и другие подобные форматы.')
+#
+# pattern = r'[,.;:!]'
+# test_string = 'яблоко,           груша.      банан;          слива!абрикос'
+# # test_string = ''.join(test_string.split()) # убрали все пробелы
+# result = re.split(pattern, test_string) # убираем знаки по паттерну
+#
+# # через map
+# # result = list(map(lambda x: x.strip(), result))
+#
+# # через list comprehension с сортировкой
+# result = sorted(x.strip() for x in result)
+# print(result)
+
+
+
 
 # Линтеры - статический анализатор кода (контролирует следование хорошим практикам)
 # Flake8 - самый популярный линтер
