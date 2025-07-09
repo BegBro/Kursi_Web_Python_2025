@@ -1,24 +1,39 @@
 # ООП (encapsulation)
+
 # Класс - тип, описывающий устройство объектов.
 # Экземпляр - объект порожденный классом.
-
-class Car:
-    def __init__(self):
-        print('Конструктор вызван.')
-    def start_engine(self):
-        self.engine_on = True
-    def drive_to(self,place):
-        if self.engine_on:
-            print(f'Едем в {place}')
-        else:
-            print('Двигатель не заведён, не едем.')
-
-car = Car()
-car.start_engine()
-
-car.drive_to('город')
+# Конструктор
+# Статичные члены класса
+from lib import Car
+car1 = Car()
+car2 = Car()
+car3 = Car()
+print('В парке машин: ',Car.get_counter())
 
 
+# from lib import Person
+#
+# p = Person()
+# p.set_age(7897)
+# print(p.get_name())
+# p.person_info()
+
+
+# p._age = 856 # Доступ (редактирование) к атрибутам из вне класса (запрещается)
+# print(p._name)
+# print(p._age)
+
+
+# from lib import Car
+#
+# car = Car('BMW', 'M3', 'black')
+# #car.start_engine()
+# car.engine_on = True
+# car.drive_to('город')
+#
+# car2 = Car()
+# car2.start_engine()
+# car2.drive_to('на дачу')
 
 # Методы классов
 # class Greater:
