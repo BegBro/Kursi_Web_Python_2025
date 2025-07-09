@@ -1,4 +1,16 @@
 #
+class Balance:
+    def __init__(self):
+        self.right = 0
+        self.left = 0
+
+    def add_left(self,weight): # в граммах
+        pass
+
+    def add_right(self,weight):
+        pass
+    def result(self) -> str:
+        return # состояние строки(левая перевесила,правая перевесила,уравновешенно)
 
 # ООП (encapsulation)
 
