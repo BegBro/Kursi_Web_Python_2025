@@ -14,5 +14,29 @@ p.red {
 }
 
 ul>li{
-color:yellow;
+color:gray;
+}
+
+#alive {
+font-family: 'Arial';
+font-size: 26pt;
+text-align: center;
+}
+
+.go-top--show {
+    display: block;
+}
+
+.go-top {
+    position: fixed;
+    left: 20px;
+    bottom: 50px;
+    cursor: pointer;
+    display: none;
+    font-size: 18pt;
+    color: rgba(0, 51, 153, 0.5);
+    background-color: rgba(0, 51, 153, 0.1);
+    padding: 5px;
+    border-radius: 50%;
+    z-index: 99999;
 }
