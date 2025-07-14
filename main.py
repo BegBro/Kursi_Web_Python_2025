@@ -5,19 +5,27 @@
 
 import json
 
-with open('dogs.json','rt') as d:
-    # data = json.load(d) # Напрямую из файла
-    temp = d.read() # читаем файл как строку
-    data = json.loads(temp) # строковое представление
+# with open('dogs.json', 'rt') as d:
+#     # data = json.load(d) # Напрямую из файла
+#     temp = d.read()  # читаем файл как строку
+#     data = json.loads(temp)  # строковое представление
+# print(data)
+#
+# for i in range(len(data)):
+#     print(f'Питомец №{i+1}')
+#     for k, v in data[i].items():
+#         if type(v) == list:
+#             print(f'\t{k}: {', '.join(v)}')
+#         else:
+#             print(f'\t{k}:{v}')
 
-for k,v in data.items():
-    if type(v) == list:
-        print(f'{k}: {', '.join(v)}')
-    else:
-        print(f'{k}:{v}')
+# for k,v in data.items():
+#     if type(v) == list:
+#         print(f'{k}: {', '.join(v)}')
+#     else:
+#         print(f'{k}:{v}')
 
 # print(f'Кличка собаки: {data['name']}. \nВозраст: {data['age']}. \nКушает:{', '.join(data['meals'])}.')
-
 
 
 # Zip
@@ -41,8 +49,6 @@ for k,v in data.items():
 #     print(zip_obj.namelist())
 
 
-
-
 # CSV-файлы
 
 # import csv
@@ -63,7 +69,7 @@ for k,v in data.items():
 # with open('file.csv', 'w', newline='', encoding='utf-8') as f:
 #     writer = csv.DictWriter(f,fieldnames=field_names)
 #     writer.writerow(data)
- # Режим квотирования
+# Режим квотирования
 # data = ['name', 25, 'town']
 # with open('sample.csv','w', newline='', encoding='utf-8') as f:
 #     writer = csv.writer(f, quoting=csv.QUOTE_NONNUMERIC)
