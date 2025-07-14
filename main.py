@@ -1,18 +1,39 @@
 # CSV-файлы
 import csv
 
+# with open('people.csv','r',encoding='utf-8') as f:
+#     dict_reader = csv.DictReader(f)
+#     for row in dict_reader:
+#         print(f' {row['name']} живет в городе {row['city']}')
+# # имена полей
+# field_names = ['name','age','city']
+# # словарь
+# data = {
+#     'name':'Борис',
+#     'age':27,
+#     'city':'Москва'
+# }
+#
+# with open('file.csv', 'w', newline='', encoding='utf-8') as f:
+#     writer = csv.DictWriter(f,fieldnames=field_names)
+#     writer.writerow(data)
+ # Режим квотирования
+data = ['name', 25, 'town']
+with open('sample.csv','w', newline='', encoding='utf-8') as f:
+    writer = csv.writer(f, quoting=csv.QUOTE_NONNUMERIC)
+    writer.writerow(data)
+# data = [
+#     ['name', 'age', 'city'],
+#     ['Борис', '25', 'Воронеж'],
+#     ['Максим', '37', 'Псков'],
+#     ['Владимир', '28', 'Тверь'],
+#     ['Глеб', '35', 'Москва'],
+# ]
 
-data = [
-    ['name', 'age', 'city'],
-    ['Борис', '25', 'Воронеж'],
-    ['Максим', '37', 'Псков'],
-    ['Владимир', '28', 'Тверь'],
-    ['Глеб', '35', 'Москва'],
-]
-with open('people.csv', 'r', encoding='utf-8') as f:
-    reader = csv.reader(f, delimiter=',',quotechar='"')
-    for row in reader:
-        print(row)
-with open('employee.csv','w',newline='',encoding='utf-8') as f:
-    writer = csv.writer(f)
-    writer.writerows(data)
+# with open('people.csv', 'r', encoding='utf-8') as f:
+#     reader = csv.reader(f, delimiter=',',quotechar='"')
+#     for row in reader:
+#         print(row)
+# with open('employee.csv','w',newline='',encoding='utf-8') as f:
+#     writer = csv.writer(f)
+#     writer.writerows(data)
