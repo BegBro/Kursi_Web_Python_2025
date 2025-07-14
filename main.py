@@ -1,5 +1,51 @@
+# JSON - (Java Script Object Notation)
+# Для чтения:
+# load() - читает из файла
+# loads() - читает строковое представление
+
+import json
+
+with open('dogs.json','rt') as d:
+    # data = json.load(d) # Напрямую из файла
+    temp = d.read() # читаем файл как строку
+    data = json.loads(temp) # строковое представление
+
+for k,v in data.items():
+    if type(v) == list:
+        print(f'{k}: {', '.join(v)}')
+    else:
+        print(f'{k}:{v}')
+
+# print(f'Кличка собаки: {data['name']}. \nВозраст: {data['age']}. \nКушает:{', '.join(data['meals'])}.')
+
+
+
+# Zip
+# from zipfile import ZipFile
+# import os
+# Запаковка
+# csv_files = [f for f in os.listdir() if f.endswith('.csv')]
+# print(csv_files)
+# with ZipFile('archive.zip','w') as myzip:
+#     for file in csv_files:
+#         myzip.write(file)
+#         os.remove(file)
+
+# Распаковка
+# files_to_extract = ['people.csv','file.csv']
+# with ZipFile('archive.zip','r') as zip_obj:
+#     zip_obj.extractall(members=files_to_extract)
+
+# Получить список названий файлов
+# with ZipFile('archive.zip','r') as zip_obj:
+#     print(zip_obj.namelist())
+
+
+
+
 # CSV-файлы
-import csv
+
+# import csv
 
 # with open('people.csv','r',encoding='utf-8') as f:
 #     dict_reader = csv.DictReader(f)
@@ -18,10 +64,12 @@ import csv
 #     writer = csv.DictWriter(f,fieldnames=field_names)
 #     writer.writerow(data)
  # Режим квотирования
-data = ['name', 25, 'town']
-with open('sample.csv','w', newline='', encoding='utf-8') as f:
-    writer = csv.writer(f, quoting=csv.QUOTE_NONNUMERIC)
-    writer.writerow(data)
+# data = ['name', 25, 'town']
+# with open('sample.csv','w', newline='', encoding='utf-8') as f:
+#     writer = csv.writer(f, quoting=csv.QUOTE_NONNUMERIC)
+#     writer.writerow(data)
+
+
 # data = [
 #     ['name', 'age', 'city'],
 #     ['Борис', '25', 'Воронеж'],
