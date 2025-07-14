@@ -5,6 +5,22 @@
 
 import json
 
+d = {
+    'ананас': 300,
+    'банан': 400,
+    'яблоко': 120,
+    'груша': 280,
+}
+
+# Запись напрямую в файл
+# with open('fruits.json','w',encoding='utf-8') as f:
+#     json.dump(d,f,indent=4)
+
+# Вывод в виде строки
+data = json.dumps(d,indent=4)
+print(data)
+
+
 # with open('dogs.json', 'rt') as d:
 #     # data = json.load(d) # Напрямую из файла
 #     temp = d.read()  # читаем файл как строку
