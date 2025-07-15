@@ -47,7 +47,7 @@ WHERE genre = (SELECT id
 FROM genres 
 WHERE title = 'фантастика')
 ```
-# 
+# Выборка по перечню значений
 ```
 SELECT title,duration
 FROM films
@@ -94,4 +94,25 @@ films.title as Фильм,
 genres.title as Жанр
 FROM films,genres
 WHERE films.genre = genres.id
+```
+
+# Добавление записи в таблицу (users)
+
+```
+INSERT INTO 
+users(name,age)
+VALUES('Tim',41),('Jake',20)
+```
+
+# Изменение значения возраста по уникальному id
+```
+UPDATE users
+SET age = 22
+WHERE id=1
+```
+
+# Удалить из таблицы users, тех кто старше 30
+```
+DELETE FROM users
+WHERE age > 30
 ```
