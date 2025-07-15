@@ -11,6 +11,10 @@
 5. Отключаемся от БД
 """
 import sqlite3  # пункт 1
+import csv
+
+
+
 # Подключаемся
 
 connection = sqlite3.connect('db/movies.sqlite')
@@ -20,13 +24,16 @@ connection = sqlite3.connect('db/movies.sqlite')
 cursor = connection.cursor()
 
 # Запрос (с помощью курсора)
-result = cursor.execute(
-    """
-    INSERT INTO
-    users(name,age)
-    VALUES('Paul',28)
-    """
-)
+with open('people.csv','r',encoding='utf-8') as f:
+    reader = csv.reader(f,delimiter=',')
+    next(reader) # пропустить заголовок (первая строка)
+    for name,age in reader:
+        cursor.execute(
+            """
+            INSERT INTO users(name,age)
+            VALUES(?,?)
+            """,(name,int(age))
+    )
 
 connection.commit() # Подтверждение
 connection.close() # Закрываем подключение
