@@ -1,15 +1,62 @@
 # Декораторы
-def outer():
-    x = 5
+import time
 
-    def inner():
-        nonlocal x
-        print('Nonlocal x=',x)
-        x = 10
-    inner()
-    print('New x=',x)
+def timeit(func):
+    def wrapper(*args,**kwargs):
+        start = time.time()
+        result = func(*args,**kwargs)
+        finish = time.time()
+        print(f'Функция исполнялась:{finish - start:.4f} сек.')
+        return result
+    return wrapper
 
-outer()
+
+@timeit
+def test():
+    time.sleep(0.8)
+
+test()
+
+
+# def logger(func):
+#     counter = 0
+#
+#     def decorated_func(*args, **kwargs):
+#         nonlocal counter
+#         counter += 1
+#         print(counter, '->', 'Аргументы: ', args,
+#               'Именованные аргументы: ', kwargs)
+#         result = func(*args, **kwargs)
+#         print('___', 'Результат:', result)
+#     return decorated_func
+#
+#
+# @logger
+# def make_burger(meal='говядиной',onion=False,tomato=False):
+#     print('Булочка')
+#     if onion:
+#         print('Луковые кольца')
+#     print('Котлета с', meal)
+#     if tomato:
+#         print('Помидоры')
+#     print('Булочка')
+#
+#
+# make_burger('бараниной',onion=True)
+
+
+# def outer():
+#     x = 5
+#
+#     def inner():
+#         nonlocal x
+#         print('Nonlocal x=',x)
+#         x = 10
+#
+#     inner()
+#     print('New x=',x)
+#
+# outer()
 
 # def upper_case_print(old_func):
 #     def new_func(*args, **kwargs):
