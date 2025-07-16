@@ -2,8 +2,10 @@
 # MVC - (Model View Controller)
 from flask import Flask
 from flask import url_for
+import sqlite3
 app = Flask(__name__)
 debug = False
+x = 5
 
 @app.route('/')
 @app.route('/index')
@@ -25,9 +27,10 @@ def cd():
     return '<br>'.join(lst)
 
 
-@app.route('/image') # Для отображений картинок,музыки,видео CSS требуется поместить контент в специальную папку static
+@app.route('/image')  # Для отображений картинок,музыки,видео CSS требуется поместить контент в специальную папку static
 def show_image():
-    return f'<img src="{url_for('static',filename='images/doberman2.jpg')}">'
+    return f'<img src="{url_for('static', filename='images/doberman2.jpg')}">'
+
 
 @app.route('/sample_page')
 def sample_page():
@@ -43,6 +46,41 @@ def sample_page():
 </body>
 </html>
     """
+
+
+@app.route('/sample_page2')
+def sample_page2():
+    with open('temp.html', 'r', encoding='utf-8') as html:
+        return html.read()
+
+# @app.route('/1')  ТАК ДЕЛАТЬ НЕ НАДО
+# def show_num():
+#     global x
+#     x += 1
+#     return str(x)
+
+
+# <string> - по умолчанию строка
+# <int:number> - целое число
+# <float:number> - дес. дробь
+# <path:p> - может содержать слеши для указания пути
+# <uuid:id> - строка-идентификатор (16-байт в HEX-формате)
+@app.route('/greeting/<user>/<int:id_num>')
+def greeting(user, id_num):
+    return f'Привет, {user} c id={id_num}'
+
+@app.route('/get-user/<int:id_num>')
+def get_user(id_num):
+    con=sqlite3.connect('db/movies.sqlite')
+    cur=con.cursor()
+    data =con.execute(
+        f"""
+        SELECT name
+        FROM users
+        WHERE trip_id={id_num}
+        """
+    ).fetchone()
+    return data[0]
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=5000, debug=debug)
