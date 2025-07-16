@@ -1,7 +1,11 @@
 # Введение во Flask
 # MVC - (Model View Controller)
-from flask import Flask
-from flask import url_for
+# GET - запрашивает данные (read)
+# POST - отправляет данные на сервер (submit)
+# PUT - принудительно заменяет всё на сервере из контекста запроса ("замена")
+# DELETE - удаляет указанные данные ("удалить")
+# PATCH - частичное изменение данных
+from flask import Flask, url_for, request
 import sqlite3
 
 app = Flask(__name__)
@@ -73,8 +77,11 @@ def greeting(user, id_num):
     return f'Привет, {user} c id={id_num}'
 
 
-@app.route('/get-user/<int:id_num>')
-def get_user(id_num):
+@app.route('/get_user/')
+@app.route('/get_user/<int:id_num>')
+def get_user(id_num=None):
+    if id_num is None:
+        return 'Нет номера записи.'
     con = sqlite3.connect('db/movies.sqlite')
     cur = con.cursor()
     data = cur.execute(
@@ -97,8 +104,19 @@ def get_user(id_num):
     <td>{name}</td>
     <td>{city}</td>
     </tr>
-    </table>
-'''
+    </table>'''
+
+
+@app.route('/form_test', methods=['POST', 'GET'])
+def form_test():
+    if request.method == 'GET':
+        with open('form.html', 'r', encoding='utf-8') as html:
+            return html.read()
+    elif request.method == 'POST':
+        print(request.form['gender'])
+        print(request.form['email'])
+        print(request.form['about'])
+        return 'Форма успешно отправлена'
 
 
 if __name__ == '__main__':
