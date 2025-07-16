@@ -3,9 +3,11 @@
 from flask import Flask
 from flask import url_for
 import sqlite3
+
 app = Flask(__name__)
 debug = False
-x = 5
+y = 5
+
 
 @app.route('/')
 @app.route('/index')
@@ -53,11 +55,12 @@ def sample_page2():
     with open('temp.html', 'r', encoding='utf-8') as html:
         return html.read()
 
+
 # @app.route('/1')  ТАК ДЕЛАТЬ НЕ НАДО
 # def show_num():
-#     global x
-#     x += 1
-#     return str(x)
+#     global y
+#     y += 1
+#     return str(y)
 
 
 # <string> - по умолчанию строка
@@ -69,18 +72,34 @@ def sample_page2():
 def greeting(user, id_num):
     return f'Привет, {user} c id={id_num}'
 
+
 @app.route('/get-user/<int:id_num>')
 def get_user(id_num):
-    con=sqlite3.connect('db/movies.sqlite')
-    cur=con.cursor()
-    data =con.execute(
+    con = sqlite3.connect('db/movies.sqlite')
+    cur = con.cursor()
+    data = cur.execute(
         f"""
-        SELECT name
+        SELECT name,city
         FROM users
         WHERE trip_id={id_num}
         """
     ).fetchone()
-    return data[0]
+    # print(data) # Для отладки
+    name, city = data
+    cur.close()
+    cur.close()
+    return f'''<table border=1>
+    <tr>
+    <td>ФИО</td>
+    <td>Город</td>
+    </tr>
+    <tr>
+    <td>{name}</td>
+    <td>{city}</td>
+    </tr>
+    </table>
+'''
+
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=5000, debug=debug)
