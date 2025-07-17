@@ -97,7 +97,7 @@ def greeting(user, id_num):
 @app.route('/get_user/<int:id_num>')
 def get_user(id_num=None):
     if id_num is None:
-        return 'Нет номера записи.'
+        return 'Нет номера записи.' # '<a href="http://localhost:5000/get-user/{id_num}">ФИО</a>'
     con = sqlite3.connect('db/movies.sqlite')
     cur = con.cursor()
     data = cur.execute(
@@ -158,9 +158,13 @@ def file_upload():
     return 'Ошибка загрузки'
 
 
-@app.route('/numbers/<int:number>')
-def odd_even(number):
-    return render_template('numbers.html', title='Чет-нечет',number=number)
+@app.route('/numbers/')
+@app.route('/numbers/<int:num>')
+def odd_even(num=None):
+    if num is None:
+        return  render_template('numbers.html',title='Нет числа',number='')
+
+    return render_template('numbers.html', title='Чет-нечет',number=num)
 
 
 @app.route('/deals')
