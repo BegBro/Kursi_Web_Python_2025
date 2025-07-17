@@ -157,7 +157,7 @@ def file_upload():
     return 'Ошибка загрузки'
 
 
-@app.route('/numbers/')
+@app.route('/numbers')
 def odd_even():
     return render_template('numbers.html', title='Чет-нечет',number=5)
 
