@@ -9,7 +9,6 @@
 import os.path
 
 from flask import Flask, url_for, request, render_template
-from openpyxl.styles.builtins import title
 from werkzeug.utils import secure_filename
 import sqlite3
 
@@ -32,14 +31,17 @@ def index():
     params['user'] = 'слушатель'
     params ['title'] = 'приветствие'
     params['weather'] = 'Сегодня хорошая погода'
-    username = 'слушатель'
     return render_template('index.html',**params)
 
 
 @app.route('/about')
 def about():
-    print('Вызвана функция about')
-    return 'О нас'
+    return render_template('about.html', title='Про нас')
+
+
+@app.route('/contacts')
+def contacts():
+    return render_template('contacts.html',title='Свяжитесь с нами')
 
 
 @app.route('/countdown')
