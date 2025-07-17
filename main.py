@@ -6,14 +6,18 @@
 # DELETE - удаляет указанные данные ("удалить")
 # PATCH - частичное изменение данных
 # JINJA - переменные, условия , циклы и т.д.
+# ORM - Object Relational Mapping
 import os.path
 
+from forms.loginform import LoginForm
 from flask import Flask, url_for, request, render_template
 from werkzeug.utils import secure_filename
+from data import db_sessions
 import sqlite3
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'uploads/'
+app.config['SECRET_KEY'] = 'just_secret_key'
 ALLOWED_EXTENSIONS = ['txt', 'pdf', 'zip', 'jpg', 'png']
 debug = False
 y = 5
@@ -42,6 +46,15 @@ def about():
 @app.route('/contacts')
 def contacts():
     return render_template('contacts.html',title='Свяжитесь с нами')
+
+@app.route('/login', methods=['GET','POST'])
+def login():
+    form = LoginForm()
+    if form.validate_on_submit():
+        return 'Форма отправлена'
+    return render_template('login.html', title='Авторизация', form=form)
+
+
 
 
 @app.route('/countdown')
@@ -183,5 +196,8 @@ def queue():
 
 
     return render_template('vars.html', title='Стоим в очереди')
+
+
 if __name__ == '__main__':
+    db_sessions.global_init('db/news.sqlite')
     app.run(host='127.0.0.1', port=5000, debug=debug)
