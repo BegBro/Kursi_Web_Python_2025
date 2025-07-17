@@ -5,6 +5,7 @@
 # PUT - принудительно заменяет всё на сервере из контекста запроса ("замена")
 # DELETE - удаляет указанные данные ("удалить")
 # PATCH - частичное изменение данных
+# JINJA - переменные, условия , циклы и т.д.
 import os.path
 
 from flask import Flask, url_for, request, render_template
@@ -155,6 +156,10 @@ def file_upload():
 
     return 'Ошибка загрузки'
 
+
+@app.route('/numbers/')
+def odd_even():
+    return render_template('numbers.html', title='Чет-нечет',number=5)
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=5000, debug=debug)
