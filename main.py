@@ -8,14 +8,24 @@
 # JINJA - переменные, условия, циклы и т.д.
 # ORM - Object Relational Mapping
 # DBeaver - универсальный софт для работы с БД
+# SOA - Service Oriented Architecture
+# MSA - Micro Service Architecture
+# REST - REpresentation State Transfer
+# GET - /book/page/50
+# GET - /book
+# POST - /book
+# DELETE - /book/7
+
 import os.path
 import sqlite3
 from sqlite3 import Error
 
+import requests
 from flask import Flask, url_for, request, render_template, redirect, abort
 from werkzeug.utils import secure_filename
 
-from data import db_session
+from data import (db_session,
+                  news_api)
 from data.news import News
 from data.users import User
 from forms.loginform import LoginForm
@@ -67,6 +77,7 @@ def index():
 
 
 @app.route('/about')
+@login_required
 def about():
     return render_template('about.html',
                            title='Про нас')
@@ -335,12 +346,12 @@ def edit_news(id_num):
         if news:
             news.title = form.title.data
             news.content = form.content.data
-            news.is_private= form.is_private.data
+            news.is_private = form.is_private.data
             db_sess.commit()
             return redirect('/news')
         else:
             abort(404)
-    return render_template('newsjob.html',title='Редактирование новости',form=form)
+    return render_template('newsjob.html', title='Редактирование новости', form=form)
 
 
 @app.route('/newsdel/<int:news_id>')
@@ -359,8 +370,26 @@ def news_delete(news_id):
     return redirect('/news')
 
 
+@app.route('/admin_page', methods=['GET', 'POST'])
+@login_required
+def admin_panel():
+    if current_user.is_authenticated and current_user.is_admin():
+        db_sess = db_session.create_session()
+        res = db_sess.query(News).all()
+        return render_template('admin.html', title='Панель администратора', news=res)
+    else:
+        abort(404)
+
+
+@app.route('/testapi')
+def testapi():
+    return requests.get('http://localhost:5000/api/news').json()
+
+
+
 if __name__ == '__main__':
     db_session.global_init('db/news.sqlite')
+    app.register_blueprint(news_api.blueprint)
     app.run(host='127.0.0.1', port=5000, debug=debug)
 
     # db_sess = db_session.create_session()
