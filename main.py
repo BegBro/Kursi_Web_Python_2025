@@ -21,19 +21,25 @@ import sqlite3
 from sqlite3 import Error
 
 import requests
-from flask import Flask, url_for, request, render_template, redirect, abort
+from flask import Flask, url_for, request, render_template, redirect, abort, jsonify, make_response
 from werkzeug.utils import secure_filename
 
 from data import (db_session,
-                  news_api)
+                  news_api,
+                  api_resources)
+from flask_restful import Api
 from data.news import News
 from data.users import User
 from forms.loginform import LoginForm
 from forms.news import NewsForm
 from forms.user import Register
 from flask_login import LoginManager, login_user, logout_user, current_user, login_required
+import mail_sender
+from mail_sender import send_mail
 
 app = Flask(__name__)
+api = Api(app)
+
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -52,12 +58,22 @@ def allowed_file(filename):
 @login_manager.user_loader
 def load_user(user_id):
     db_sess = db_session.create_session()
-    return db_sess.query(User).get(user_id)
+    return db_sess.get(User, user_id)
+
+
+# @app.errorhandler(404)
+# def not_found(e):
+#     return render_template('404.html', title='Не найдено')
+
+
+@app.errorhandler(400)
+def bad_request(_):
+    return make_response(jsonify({'error': 'Bad request'}), 400)
 
 
 @app.errorhandler(404)
-def not_found(e):
-    return render_template('404.html', title='Не найдено')
+def not_found(_):
+    return make_response(jsonify({'error': 'Not found'}), 404)
 
 
 @app.errorhandler(401)
@@ -383,13 +399,39 @@ def admin_panel():
 
 @app.route('/testapi')
 def testapi():
-    return requests.get('http://localhost:5000/api/news').json()
+    res = requests.get('http://localhost:5000/api/news').json()
+    return render_template('testapi.html',
+                           title='Тест API',
+                           news=res)
 
+@app.route('/sendmail', methods=['GET','POST'])
+def mail_send():
+    name = request.form.get('name')
+    email = request.form.get('email')
+    message = request.form.get('message')
+    print(name,email,message)
+    print(type(name),type(email),type(message))
+    temp = (f'Письмо с обратной связью от: '
+            f''
+            f'"{name}" с текстом "{message}"'
+            f''
+            f'Отправитель: {email}. Вот его сообщение: ')
+    print(temp)
+    mess = temp + message
+    print(mess)
+    send_mail('andrei_begunov@mail.ru', 'обратная связь с сайта', mess)
+    send_mail(email, 'Получено', f'{name},  спасибо за обратную связь.')
+    return render_template('contacts.html',
+                           title='Почта отправлена', mess='Форма отправлена')
 
 
 if __name__ == '__main__':
     db_session.global_init('db/news.sqlite')
     app.register_blueprint(news_api.blueprint)
+    # Доступ к отдельной новости
+    api.add_resource(api_resources.NewsResource, '/api/v2/news/<int:news_id>')
+    # Доступ ко всем новостям
+    api.add_resource(api_resources.NewsResourceList, '/api/v2/news')
     app.run(host='127.0.0.1', port=5000, debug=debug)
 
     # db_sess = db_session.create_session()
