@@ -55,6 +55,8 @@ def allowed_file(filename):
         filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 
+
+
 @login_manager.user_loader
 def load_user(user_id):
     db_sess = db_session.create_session()
