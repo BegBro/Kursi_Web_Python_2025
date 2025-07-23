@@ -1,0 +1,37 @@
+@import 'reset';
+@import 'templates';
+$font-main: Arial, Helvetica;
+$primary-color: #555;
+
+body {
+    font: $font-main;
+    color: $primary-color;
+}
+
+nav {
+    ul {
+        margin: 0;
+        font: $font-main;
+    }
+
+    li {
+        display: block
+    }
+}
+
+.box {
+    @include transform(rotate(30deg))
+}
+
+div {
+    @include transform(60deg)
+}
+
+.message {
+    @extend %ms;
+    display: block;
+}
+
+.container {
+    width: 300/600 * 100%;
+}
